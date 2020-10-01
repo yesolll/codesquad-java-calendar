@@ -7,7 +7,22 @@ public class Calendar {
 	public final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	public int getMaxDaysOfMonth(int month) {
-		return MAX_DAYS[month - 1];
+		if (month == 1) {
+			return 31;
+		} else if (month == 2) {
+			return 28;
+		}// (...)
+		return 31;
+
+//		switch (month) {
+//		case 2:
+//			return 28;
+//		case 4:
+//			return 30;
+//		// (...)
+//		default:
+//			return 1;
+//		}
 	}
 
 	public void pirntSampleCalendar() {
@@ -28,7 +43,7 @@ public class Calendar {
 		System.out.printf("%d월은 %d일까지 있습니다.\n\n", month, cal.getMaxDaysOfMonth(month));
 		cal.pirntSampleCalendar();
 		scanner.close();
-		
+
 	}
 
 }
