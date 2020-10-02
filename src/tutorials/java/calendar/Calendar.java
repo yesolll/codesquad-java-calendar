@@ -2,18 +2,47 @@ package tutorials.java.calendar;
 
 public class Calendar {
 
-	public final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	private final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	public int getMaxDaysOfMonth(int month) {
-		return MAX_DAYS[month - 1];
+	public boolean isLeapYear(int year) {
+		boolean leap;
+		if ((year % 4 == 0 || year % 400 == 0 ) && year % 100 != 0) {
+			leap = true;
+		} else {
+			leap = false;
+		}
+		return leap;
 	}
+
+	
+	public int getMaxDaysOfMonth(int year, int month) {
+		if(isLeapYear(year)) {
+			return LEAP_MAX_DAYS[month - 1];
+		}else {
+			return MAX_DAYS[month - 1];
+		}
+	}
+//나	public int getMaxDaysOfMonth(int month) {
+//		return MAX_DAYS[month - 1];
+//	}
+//
+//	public int getMaxDaysOfMonth_leap(int month) {
+//		return LEAP_MAX_DAYS[month - 1];
+//	}
 
 	public void printCalendar(int year, int month) {
 		System.out.printf("    <<%4d년%3d월>>\n", year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("---------------------");
-
-		int maxDay = getMaxDaysOfMonth(month);
+		
+		int maxDay = getMaxDaysOfMonth(year, month);
+//나		int maxDay = 0;
+//		if (isLeapYear(year) == true) {
+//			maxDay = getMaxDaysOfMonth_leap(month);
+//		} else {
+//			maxDay = getMaxDaysOfMonth(month);
+//		}
 
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
