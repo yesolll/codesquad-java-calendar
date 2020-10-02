@@ -7,22 +7,7 @@ public class Calendar {
 	public final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	public int getMaxDaysOfMonth(int month) {
-		if (month == 1) {
-			return 31;
-		} else if (month == 2) {
-			return 28;
-		}// (...)
-		return 31;
-
-//		switch (month) {
-//		case 2:
-//			return 28;
-//		case 4:
-//			return 30;
-//		// (...)
-//		default:
-//			return 1;
-//		}
+		return MAX_DAYS[month-1];
 	}
 
 	public void pirntSampleCalendar() {
