@@ -1,7 +1,10 @@
 package tutorials.java.calendar;
 
-public class Calendar {
 
+
+public class Calendar {
+	
+	
 	private final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -23,30 +26,35 @@ public class Calendar {
 			return MAX_DAYS[month - 1];
 		}
 	}
-//나	public int getMaxDaysOfMonth(int month) {
-//		return MAX_DAYS[month - 1];
-//	}
-//
-//	public int getMaxDaysOfMonth_leap(int month) {
-//		return LEAP_MAX_DAYS[month - 1];
-//	}
 
-	public void printCalendar(int year, int month) {
+	
+	public void printCalendar(int year, int month, int weekday) {
+		CalendarMain cm = new CalendarMain();
 		System.out.printf("    <<%4d년%3d월>>\n", year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
 		System.out.println("---------------------");
 		
 		int maxDay = getMaxDaysOfMonth(year, month);
-//나		int maxDay = 0;
-//		if (isLeapYear(year) == true) {
-//			maxDay = getMaxDaysOfMonth_leap(month);
-//		} else {
-//			maxDay = getMaxDaysOfMonth(month);
-//		}
 
-		for (int i = 1; i <= maxDay; i++) {
+		for (int a = 0; a < weekday; a++) {
+			System.out.print("   ");
+		}
+		
+		int count = 0;
+		if (weekday != 0) {
+			count = 7 - weekday;
+		}else {
+			count = 0;
+		}
+		
+		for(int j = 1; j <= count ; j++) {
+			System.out.printf("%3d", j);
+		}
+		System.out.println();
+		
+		for (int i = count + 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
-			if (i % 7 == 0) {
+			if (i % 7 == count) {
 				System.out.println();
 			}
 //			System.out.println();
